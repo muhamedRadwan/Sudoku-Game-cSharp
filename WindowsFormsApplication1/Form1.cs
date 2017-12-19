@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,10 +38,12 @@ namespace WindowsFormsApplication1
             Check.BackColor = Color.FromArgb(96, 51, 5);
             Clear.BackColor = Color.FromArgb(96, 51, 5);
             Exit.BackColor = Color.FromArgb(96, 51, 5);
+            OpenGame.BackColor = Color.FromArgb(96, 51, 5);
             solve.Click += solve_Click;
             Check.Click += check_Click;
             Clear.Click += cl_Click;
             Exit.Click += e_Click;
+            OpenGame.Click += OpenGame_Click;
             Exit.MouseHover += Panel_MouseHover;
             Exit.MouseLeave += Panel_MouseLeave;
             Check.MouseHover += Panel_MouseHover;
@@ -49,6 +52,9 @@ namespace WindowsFormsApplication1
             Clear.MouseLeave += Panel_MouseLeave;
             solve.MouseHover += Panel_MouseHover;
             solve.MouseLeave += Panel_MouseLeave;
+            OpenGame.MouseHover += Panel_MouseHover;
+            OpenGame.MouseLeave += Panel_MouseLeave;
+
         }
 
         private void Panel_MouseHover(object sender, EventArgs e)
@@ -90,6 +96,7 @@ namespace WindowsFormsApplication1
                     TextBox t1 = new TextBox();
                     t1.TextAlign = HorizontalAlignment.Center;
                     t1.Size = new Size(80, 80);
+                    t1.KeyPress += textBox1_KeyPress;
                     if (j == 2 || j == 5)
                     {
                         t1.Margin = new Padding(0, 0, 5, 0);
@@ -220,6 +227,7 @@ namespace WindowsFormsApplication1
 
                 }
             }
+
         }
 
         public void ClearGame()
@@ -298,6 +306,58 @@ namespace WindowsFormsApplication1
         {
             PlayGame(Levels.Evil);
         }
-     
+
+        private void OpenGame_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "Select Your Sudoku File Game";
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                   
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            String filePath = @openFileDialog1.FileName; //Fill Path That You Selected
+                            /*Your Function Should Could Here :) */
+                            /*Nermeen Section*/
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+        }
+
+
+
+        //Validation on each textBox 
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+            else if (char.IsDigit(e.KeyChar)) //Check if Text Box have number  Betwwen  1 and 9 Or not 
+            {
+                TextBox text = (TextBox)sender;
+                String value = "";
+                value = text.Text.ToString() + e.KeyChar;
+                int numberOfText = int.Parse(value);
+
+                if (numberOfText > 9 || numberOfText < 1)
+                {
+                    e.Handled = true;
+                }
+            }
+           
+        }
+        public System.IO.Stream myStream { get; set; }
     }
 }

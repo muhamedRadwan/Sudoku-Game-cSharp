@@ -20,30 +20,6 @@ namespace WindowsFormsApplication1
            
         }
 
-        //Should Call First To initialize the sudoku array 
-        public static void convertTextBoxToInt()
-        {
-            for (int Row = 0; Row < 9; Row++)
-            {
-                for (int Column = 0; Column < 9; Column++)
-                {
-                    sudoku[Row, Column] = Int16.Parse(Sudoku.text[Row, Column].Text.ToString());
-                }
-            }
-        }
-
-        //Shold Call Once Before any Operation that done in  Colmuns to speed app operations (Page Fault)
-        public static void ConvertRowsToCols()
-        {
-            for (int Row = 0; Row < 9; Row++)
-            {
-                for (int Column = 0; Column < 9; Column++)
-                {
-                    sudokuCols[Column, Row] = sudoku[Column, Row];
-                }
-            }
-        }
-
         //Check if This number repeated in This Row Or Not
         public static bool Is_SaveRow(int row, int num, Point point)
         {

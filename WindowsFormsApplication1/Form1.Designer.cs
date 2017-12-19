@@ -49,18 +49,22 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.BackGroundDrop = new System.Windows.Forms.Panel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.OpenGame = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.Check.SuspendLayout();
             this.solve.SuspendLayout();
             this.Clear.SuspendLayout();
             this.Exit.SuspendLayout();
             this.PChoice.SuspendLayout();
             this.BackGroundDrop.SuspendLayout();
+            this.OpenGame.SuspendLayout();
             this.SuspendLayout();
             // 
             // Check
             // 
             this.Check.Controls.Add(this.lCheck);
-            this.Check.Location = new System.Drawing.Point(222, 73);
+            this.Check.Location = new System.Drawing.Point(331, 73);
             this.Check.Margin = new System.Windows.Forms.Padding(2);
             this.Check.Name = "Check";
             this.Check.Size = new System.Drawing.Size(80, 45);
@@ -117,7 +121,7 @@
             // solve
             // 
             this.solve.Controls.Add(this.lSolve);
-            this.solve.Location = new System.Drawing.Point(134, 73);
+            this.solve.Location = new System.Drawing.Point(240, 73);
             this.solve.Margin = new System.Windows.Forms.Padding(2);
             this.solve.Name = "solve";
             this.solve.Size = new System.Drawing.Size(80, 45);
@@ -137,7 +141,7 @@
             // Clear
             // 
             this.Clear.Controls.Add(this.lClear);
-            this.Clear.Location = new System.Drawing.Point(310, 73);
+            this.Clear.Location = new System.Drawing.Point(422, 73);
             this.Clear.Margin = new System.Windows.Forms.Padding(2);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(80, 45);
@@ -156,7 +160,7 @@
             // Exit
             // 
             this.Exit.Controls.Add(this.lExit);
-            this.Exit.Location = new System.Drawing.Point(399, 73);
+            this.Exit.Location = new System.Drawing.Point(510, 73);
             this.Exit.Margin = new System.Windows.Forms.Padding(2);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(80, 45);
@@ -255,6 +259,29 @@
             this.BackGroundDrop.Size = new System.Drawing.Size(117, 258);
             this.BackGroundDrop.TabIndex = 14;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // OpenGame
+            // 
+            this.OpenGame.Controls.Add(this.label1);
+            this.OpenGame.Location = new System.Drawing.Point(134, 73);
+            this.OpenGame.Margin = new System.Windows.Forms.Padding(2);
+            this.OpenGame.Name = "OpenGame";
+            this.OpenGame.Size = new System.Drawing.Size(102, 45);
+            this.OpenGame.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Have Game !";
+            // 
             // Sudoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,6 +290,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(633, 506);
+            this.Controls.Add(this.OpenGame);
             this.Controls.Add(this.BackGroundDrop);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.Clear);
@@ -285,6 +313,8 @@
             this.Exit.PerformLayout();
             this.PChoice.ResumeLayout(false);
             this.BackGroundDrop.ResumeLayout(false);
+            this.OpenGame.ResumeLayout(false);
+            this.OpenGame.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -311,5 +341,8 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Panel BackGroundDrop;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Panel OpenGame;
+        private System.Windows.Forms.Label label1;
     }
 }
