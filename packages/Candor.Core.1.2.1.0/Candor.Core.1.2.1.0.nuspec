@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Candor.Core</id>
+    <version>1.2.1.0</version>
+    <authors>Nexul Software LLC</authors>
+    <owners>Nexul Software LLC</owners>
+    <licenseUrl>https://github.com/michael-lang/candor-common/blob/master/MIT-LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/michael-lang/candor-common</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Common classes used by other Candor libraries.</description>
+    <releaseNotes>This code is open source and can be found at http://github.com/michael-lang/candor-common.
+      In depth articles can be found at http://candordeveloper.com/
+      Changes:
+      1.2.1: * SequenceIdGenerator - Fix retry bug when calling NextId when cached ids are used up.
+      Also now a syncronization failure to get a new Id range logs the problem as a warning (formerly error) since it will retry.
+      * RepeatingWorkerRoleTask - fix Ping task restart logic to recognize new custom delay added in 1.2.0.
+      * updated NuGet package to include debug symbols, updated documentation.
+      1.2.0: * RepeatingWorkerTask implementations can now pass back an override
+      custom delay duration from each processing iteration
+      * No broken interfaces, only additions.  An upgrade should not cause any issues.
+      1.1.0: ProviderResolver error message for resolving a non-configured type is now meaningful.
+      1.0.1: Update package dependency references</releaseNotes>
+    <copyright>Copyright 2014 Michael Lang</copyright>
+    <tags>Candor Reflection Provider Paging</tags>
+    <dependencies>
+      <dependency id="Common.Logging" version="2.2.0" />
+    </dependencies>
+  </metadata>
+</package>

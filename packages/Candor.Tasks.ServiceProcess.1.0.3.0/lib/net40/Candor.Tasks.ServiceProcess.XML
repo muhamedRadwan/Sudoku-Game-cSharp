@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Candor.Tasks.ServiceProcess</name>
+    </assembly>
+    <members>
+        <member name="T:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask">
+            <summary>
+            Monitors that a service is up either directly or by checking for updates to a
+            file that it generates.  When a monitored service stops working, attempts are
+            made to restart the service or the server it runs on.
+            </summary>
+            <remarks>
+            The service being monitored can be on any machine in the same domain.  If not
+            on a domain, then only the current machine can be monitored and restarted.
+            </remarks>
+        </member>
+        <member name="M:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Initializes the provider with the specified values.
+            </summary>
+            <param name="name">The name of the provider.</param>
+            <param name="configValue">Provider specific attributes.</param>
+        </member>
+        <member name="M:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.AssertConfigurationValid">
+            <summary>
+            Ensures the configuration is valid, otherwise it throws an ArgumentException.
+            </summary>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.OnWaitingPeriodElapsed">
+            <summary>
+            The code to be executed everytime the waiting period elapses.
+            </summary>
+            <remarks>
+            This will complete before the waiting period until the next iteration begins.
+            </remarks>
+        </member>
+        <member name="M:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.IsMonitorEnabled">
+            <summary>
+            Possible expansion point to disable the service monitor at preconfigured times.
+            </summary>
+            <returns>True if the service should be monitoring currently; otherwise false.</returns>
+        </member>
+        <member name="M:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.ValidateServiceFile">
+            <summary>
+            Validates that a service file exists, and if not it is logged.
+            A custom logger should be provided to notify the appropriate party.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.GetExpectedAgeMinutes">
+            <summary>
+            Gets the expected file age in minutes, or the max file age if the
+            expected age is not specified.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.ValidateWindowsService">
+            <summary>
+            Validates if a windows service is running.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.RestartService">
+            <summary>
+            Restarts the windows service, if possible.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.RestartServer">
+            <summary>
+            Force Restarts the service, if possible.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.FormatServerName(System.String)">
+            <summary>
+            Formats a server name for use by management API to restart the server.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.LogProvider">
+            <summary>
+            Gets or sets the log destination for this type.  If not set, it will be automatically loaded when needed.
+            </summary>
+        </member>
+        <member name="P:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.ServiceName">
+            <summary>
+            Gets or sets the name of the service.
+            </summary>
+        </member>
+        <member name="P:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.ServiceMachineName">
+            <summary>
+            Gets or sets the machine name hosting the service.
+            </summary>
+        </member>
+        <member name="P:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.OutputFileNameToWatch">
+            <summary>
+            Gets or sets the full path of the file to be watched.
+            </summary>
+        </member>
+        <member name="P:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.OutputFileExpectedAgeMinutes">
+            <summary>
+            Gets or sets the expected age in minutes of the watched file if the service is
+            running properly.
+            </summary>
+        </member>
+        <member name="P:Candor.Tasks.ServiceProcess.ServiceMonitorWorkerRoleTask.OutputFileMaxAgeMinutes">
+            <summary>
+            Gets or sets the acceptable age in minutes of the watched file before the file
+            should be reported as an error.
+            </summary>
+        </member>
+    </members>
+</doc>

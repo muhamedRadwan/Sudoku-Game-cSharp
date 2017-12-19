@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Candor.Tasks.ServiceProcess</id>
+    <version>1.0.3.0</version>
+    <title>Candor.Tasks.ServiceProcess</title>
+    <authors>Nexul Software LLC</authors>
+    <owners>Nexul Software LLC</owners>
+    <licenseUrl>https://github.com/michael-lang/candor-common/blob/master/MIT-LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/michael-lang/candor-common</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Tasks that can monitor windows services (System.ServiceProcess)</description>
+    <summary />
+    <releaseNotes>This code is open source and can be found at http://github.com/michael-lang/candor-common.
+      In depth articles can be found at http://candordeveloper.com/
+      Changes:
+      1.0.3: Update package dependency references, updated documentation.
+      1.0.2: Update package dependency references
+      1.0.1: Update package dependency references</releaseNotes>
+    <copyright>Copyright 2014 Michael Lang</copyright>
+    <tags>Candor ServiceProcess monitoring</tags>
+    <dependencies>
+      <dependency id="Candor.Core" version="1.2.1.0" />
+      <dependency id="Common.Logging" version="2.2.0" />
+    </dependencies>
+  </metadata>
+</package>
