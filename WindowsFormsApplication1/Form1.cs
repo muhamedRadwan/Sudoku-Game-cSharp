@@ -120,9 +120,14 @@ namespace WindowsFormsApplication1
 
         private void PlayGame(Levels diff)
         {
-            ClearGame();//First Clear The Gui
             MakeSudokuSeq makeGame = new MakeSudokuSeq();
-            int[,] suduku = makeGame.diff_gen((int)diff); // 1 easy 
+            initGame(makeGame.diff_gen((int)diff));
+        }
+        
+
+        //init Game To disable TextBox 
+        private void  initGame(int [,] suduku){
+            ClearGame();//First Clear The Gui
             for (int Row = 0; Row < 9; Row++)
             {
                 for (int Column = 0; Column < 9; Column++)
@@ -145,7 +150,6 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-        
         private void cl_Click(object sender, EventArgs e)
         {
             ClearGame();
@@ -322,8 +326,10 @@ namespace WindowsFormsApplication1
                     {
                         using (myStream)
                         {
-                            String filePath = @openFileDialog1.FileName; //Fill Path That You Selected
-                            /*Your Function Should Could Here :) */
+                            /*Your Function Should called Here :) */
+                            string input = System.IO.File.ReadAllText(openFileDialog1.FileName);
+                            get_sudoko(input);
+                            initGame(OperationsSeq.sudoku);
                             /*Nermeen Section*/
                         }
                     }
@@ -358,6 +364,43 @@ namespace WindowsFormsApplication1
             }
            
         }
+
+        //Read Input From Text File 
+        private void get_sudoko(string input)
+        {
+            int[,] puzzle = new int[9, 9];
+            char[] delimiterChars = { ' ', '\n', '\t' };
+            string[] lines = input.Split(delimiterChars);
+            int[] map_to_int = new int[lines.Length];
+            int number;
+            for (int a = 0; a < lines.Length; a++)
+            {
+                if (!string.IsNullOrWhiteSpace(lines[a]))
+                {
+                    bool result = Int32.TryParse(lines[a], out number);
+
+                    if (result)
+                    {
+                        map_to_int[a] = number;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failure in conversion");
+                    }
+                }
+            }
+            for (int x = 0; x < 9; x++)
+            {
+                for (int y = 0; y < 9; y++)
+                {
+                    OperationsSeq.sudoku[x, y] = map_to_int[x * 9 + y];
+                }
+
+            }
+        }
+
+
+
         public System.IO.Stream myStream { get; set; }
     }
 }

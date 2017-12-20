@@ -72,13 +72,13 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="MakeSudokuSeq.cs" />
+    <Compile Include="OperationsPar.cs" />
     <Compile Include="OperationsSeq.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadSudoku.cs" />
     <Compile Include="SolveSudokuSeq.cs" />
-    <Compile Include="Temp.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
